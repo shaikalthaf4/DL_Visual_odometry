@@ -1,6 +1,6 @@
 # **Context-Based Scene Masking to improve Visual Odometry: Classical and Deep Learning Approaches**
 
-[![Watch the video](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)]([https://youtu.be/VIDEO_ID](https://www.youtube.com/watch?v=o0zFLPSKSic))
+<img src='results/demo.gif' width='600'/>
 
 This repository contains implementations of Visual Odometry (VO) using both classical feature-based methods (SIFT + RANSAC) and deep learning methods (SuperPoint + RANSAC). The aim is to provide a comparative analysis of the two methods in vehicle path tracking scenarios.
 
