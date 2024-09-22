@@ -1,4 +1,3 @@
-"""
 # **Visual Odometry using Classical and Deep Learning Approaches**
 
 This repository contains implementations of Visual Odometry (VO) using both classical feature-based methods (SIFT + RANSAC) and deep learning methods (SuperPoint + RANSAC). The aim is to provide a comparative analysis of the two methods in vehicle path tracking scenarios.
@@ -27,7 +26,33 @@ Camera pose estimation plays a crucial role in Augmented Reality (AR), Simultane
   
 ## **Results**
 Our experiments indicate that:
-- The classical SIFT + RANSAC pipeline achieves better performance when optimized with scene-based masking (RMS error reduced from 14.
+- The classical SIFT + RANSAC pipeline achieves better performance when optimized with scene-based masking (RMS error reduced from 14.3 to 2.44 on KITTI Seq-03).
+- The SuperPoint + RANSAC pipeline offers comparable results to the classical approach but may require more carefully crafted masks for dynamic environments.
+
+Detailed results and visualizations, including comparisons with ground truth trajectories, are available in the [project report](Report.pdf) and our [video explanation](https://www.youtube.com/watch?v=o0zFLPSKSic).
+
+
+## ** Data Structure**
+For detailed instructions on how to organize the dataset, refer to the following structure:
+
+-- KITTI_data (data_odometry_gray, data_odometry_poses, data_odometry_calib)
+    |-- data_odometry_gray
+    |-- data_odometry_pose
+    |-- data_odometry_calib
+
+## **Challenges & Innovations**
+- Dynamic Object Filtering: Developing an automated semantic segmentation approach to exclude dynamic objects (e.g., vehicles) for more reliable pose estimation.
+- Scene-based Masking: Demonstrated significant error reduction through scene-based filtering of keypoints, particularly in scenarios involving static camera poses or irrelevant features.
+
+## **References**
+SuperPoint: Self-Supervised Interest Point Detection and Description [DeTone et al., 2018](https://arxiv.org/abs/1712.07629)
+
+## **Future Work**
+We aim to incorporate automated masking techniques using semantic segmentation for enhanced keypoint selection in dynamic environments, making this framework more robust for real-world autonomous navigation systems
+
+
+
+
 ####################
 
 # Visual Odometry
