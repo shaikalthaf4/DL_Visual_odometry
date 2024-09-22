@@ -7,7 +7,8 @@ class DatasetReaderKITTI:
     def __init__(self, datasetPath, scaling=1.0):
         __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
         self._datasetPath = os.path.join(__location__, datasetPath)
-        self._imagesPath = os.path.join(self._datasetPath, "image_0")
+        self._imagesPath = self._datasetPath
+        #self._imagesPath = os.path.join(self._datasetPath, "data")
         self._numFrames = len([x for x in os.listdir(self._imagesPath) if x.endswith(".png")])
         print(self._numFrames)
         self._scaling = scaling
@@ -21,12 +22,12 @@ class DatasetReaderKITTI:
         if index >= self._numFrames:
             raise Exception("Cannot read frame number {} from {}".format(index, self._imagesPath))
 
-        img = cv2.imread(os.path.join(self._imagesPath, "{:06d}.png".format(index)))
+        img = cv2.imread(os.path.join(self._datasetPath,"{:06d}.png".format(index)))
         img = cv2.resize(img, (int(img.shape[1] * self._scaling), int(img.shape[0] * self._scaling)))
         return img
 
     def readCameraMatrix(self):
-        cameraFile = os.path.join(self._datasetPath, "calib.txt")
+        cameraFile = 'KITTI_data/data_odometry_calib/dataset/sequences/03/calib.txt'
         with open(cameraFile) as f:
             firstLine = f.readlines()[0][4:]
             focal, _, cx, _, _, _, cy, _, _, _, _, _ = list(map(float, firstLine.rstrip().split(" ")))
@@ -41,7 +42,7 @@ class DatasetReaderKITTI:
             return K
 
     def readGroundtuthPosition(self, frameId):
-        groundtruthFile = os.path.join(self._datasetPath, "G:/My Drive/CS445_Project/KITTI_data/data_odometry_poses/dataset/poses/03.txt")
+        groundtruthFile = "KITTI_data/data_odometry_poses/dataset/poses/03.txt"
         with open(groundtruthFile) as f:
             lines = f.readlines()
 
