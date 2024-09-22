@@ -35,11 +35,12 @@ Detailed results and visualizations, including comparisons with ground truth tra
 ## **Data Structure**
 For detailed instructions on how to organize the dataset, refer to the following structure:
 
+```
 KITTI_data/ 
 ├── data_odometry_gray/
 ├── data_odometry_poses/
 └── data_odometry_calib/
-
+```
 
 ## **Challenges & Innovations**
 - Dynamic Object Filtering: Developing an automated semantic segmentation approach to exclude dynamic objects (e.g., vehicles) for more reliable pose estimation.
