@@ -1,3 +1,35 @@
+"""
+# **Visual Odometry using Classical and Deep Learning Approaches**
+
+This repository contains implementations of Visual Odometry (VO) using both classical feature-based methods (SIFT + RANSAC) and deep learning methods (SuperPoint + RANSAC). The aim is to provide a comparative analysis of the two methods in vehicle path tracking scenarios.
+
+## **Motivation**
+Camera pose estimation plays a crucial role in Augmented Reality (AR), Simultaneous Localization and Mapping (SLAM), and autonomous navigation. Accurate pose estimation is particularly challenging due to the dynamic nature of real-world scenes. This project seeks to improve the classical geometric-based approach and compare it with modern deep learning techniques for VO, offering insights into their performance in real-world applications like autonomous driving.
+
+## **Implemented Pipelines**
+
+### **1. SIFT + RANSAC Pipeline (Classical Approach)**
+- **Keypoint Detection**: Detects keypoints using SIFT and tracks them across frames using OpenCV's sparse optical flow.
+- **Outlier Rejection**: Implements RANSAC to reject outliers and estimate an essential matrix for pose recovery.
+- **Scene-based Masking**: Applies scene knowledge-based masking to reduce noise from irrelevant keypoints (e.g., sky, frame edges).
+- **Evaluation**: Quantitatively evaluated on the [KITTI Visual Odometry Dataset](http://www.cvlibs.net/datasets/kitti/eval_odometry.php).
+
+### **2. SuperPoint + RANSAC Pipeline (Deep Learning Approach)**
+- **Keypoint Detection**: Utilizes SuperPoint, a fully convolutional neural network trained on the MS-COCO dataset, to detect keypoints.
+- **Outlier Rejection**: Integrates with RANSAC to filter outlier points, followed by essential matrix computation.
+- **Flow Tracking**: Minimizes dynamic object keypoints, focusing on static elements in the scene.
+- **Evaluation**: The learning-based framework is also tested on the KITTI dataset, providing a comparative analysis with the classical method.
+
+## **Key Features**
+- **Dataset Compatibility**: Primarily uses the KITTI dataset. We have also collected our own dataset using a smartphone-mounted camera, allowing for evaluation on diverse scenarios.
+- **Scene-based Masking**: A novel scene-based masking technique to filter irrelevant regions (e.g., sky, dynamic objects), significantly improving pose estimation accuracy.
+- **Pretrained Models**: Includes pretrained SuperPoint weights for easy replication of results.
+  
+## **Results**
+Our experiments indicate that:
+- The classical SIFT + RANSAC pipeline achieves better performance when optimized with scene-based masking (RMS error reduced from 14.
+####################
+
 # Visual Odometry
 
 
